@@ -24,7 +24,7 @@ exports.createUser = function(req, res, next) {
 exports.updateUser = function(req, res) {
   var userUpdates = req.body;
 
-  // if user is trying to update others users info
+  // if user is trying to update other users info
   if(req.user._id != userUpdates._id) {
     res.status(403);
     return res.end();
