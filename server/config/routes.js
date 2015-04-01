@@ -5,10 +5,8 @@ var auth = require('./auth'),
 
 module.exports = function(app) {
 
-  // app.post('/api/users', users.createUser);
-  app.post('/api/users', function(req, res) {
-    res.render('../../public/app/test');
-  });
+  app.post('/api/users', users.createUser);
+
   app.put('/api/users', users.updateUser);
 
   // render partials from public folder
