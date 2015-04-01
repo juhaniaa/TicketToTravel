@@ -1,3 +1,3 @@
-angular.module('app').controller('ttMainCtrl', function($scope) {
+angular.module('app').controller('ttMainCtrl', ['$scope', function($scope) {
   $scope.hello = "Hello Angular";
-});
+}]);

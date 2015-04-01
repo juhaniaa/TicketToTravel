@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      workspaces: ["public/dist"]
+      workspaces: ["public/dist", "generated"]
     },
 
     // minify css
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
     // concatenate files
     concat: {
       dist: {
-        dest: "public/dist/app.min.js",
+        dest: "generated/app.min.js",
         src: [
           "<%= files.js.vendor %>",
           "<%= files.js.app %>"
@@ -68,7 +68,8 @@ module.exports = function(grunt) {
     // minify files
     uglify: {
       options: {
-        banner: "<%= banner %>"
+        banner: "<%= banner %>",
+        mangle: false
       },
       dist: {
         dest: "public/dist/<%= pkg.name %>.min.js",
