@@ -3,8 +3,7 @@ var rootPath = path.normalize(__dirname + '/../../');
 
 module.exports = {
   development: {
-    // db: 'mongodb://localhost/tickettravel',
-    db: 'mongodb://travelapp:qwetravel@ds039211.mongolab.com:39211/tickettravel',
+    db: 'mongodb://localhost/tickettravel',
     rootPath: rootPath,
     port: process.env.PORT || 3030
   },
