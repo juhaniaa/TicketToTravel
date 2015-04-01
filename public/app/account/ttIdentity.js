@@ -1,4 +1,4 @@
-angular.module('app').factory('ttIdentity', function($window, ttUser) {
+angular.module('app').factory('ttIdentity', ['$window', 'ttUser', function($window, ttUser) {
   var currentUser;
   if(!!$window.bootstrappedUserObject) {
     currentUser = new ttUser();
@@ -10,4 +10,4 @@ angular.module('app').factory('ttIdentity', function($window, ttUser) {
       return !!this.currentUser;
     }
   }
-})
+}])

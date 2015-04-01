@@ -1,9 +1,9 @@
 angular.module('app', ['ngResource', 'ngRoute']);
 
-angular.module('app').config(function($routeProvider, $locationProvider) {
+angular.module('app').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider, ttAuth) {
   var routeRoleChecks = {
-    user: {auth: function(mvAuth) {
-      return mvAuth.authorizeAuthenticatedUserForRoute();
+    user: {auth: function(ttAuth) {
+      return ttAuth.authorizeAuthenticatedUserForRoute();
     }}
   }
   $locationProvider.html5Mode(true);
@@ -12,12 +12,12 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
     .when('/signup', { templateUrl: '/partials/account/signup',
       controller: 'ttSignupCtrl'
     });
-});
+}]);
 
-angular.module('app').run(function($rootScope, $location) {
+angular.module('app').run(['$rootScope', '$location', function($rootScope, $location) {
   $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection) {
     if(rejection === 'not authorized') {
       $location.path('/');
     }
   })
-})
+}])

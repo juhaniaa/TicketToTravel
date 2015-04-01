@@ -1,4 +1,4 @@
-angular.module('app').controller('ttNavBarLoginCtrl', function($scope, $http, ttIdentity, ttNotifier, ttAuth, $location) {
+angular.module('app').controller('ttNavBarLoginCtrl', ['$scope', '$http', '$location', 'ttIdentity', 'ttNotifier', 'ttAuth', function($scope, $http, $location, ttIdentity, ttNotifier, ttAuth) {
   $scope.identity = ttIdentity;
   $scope.signin = function(username, password) {
     ttAuth.authenticateUser(username,password).then(function(success) {
@@ -18,4 +18,4 @@ angular.module('app').controller('ttNavBarLoginCtrl', function($scope, $http, tt
       $location.path('/');
     })
   }
-});
+}]);

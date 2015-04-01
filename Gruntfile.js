@@ -36,13 +36,16 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      workspaces: ["dist", "generated"]
+      workspaces: ["public/dist", "generated"]
     },
 
     // concatenate files
-    concat: {
+    concat_sourcemap: {
+      options: {
+        sourcesContent:true
+      },
       app: {
-        dest: "generated/js/app.min.js",
+        dest: "public/dist/app.min.js",
         src: [
           "<%= files.js.vendor %>",
           "<%= files.js.app %>"
@@ -56,8 +59,10 @@ module.exports = function(grunt) {
         banner: "<%= banner %>"
       },
       dist: {
-        dest: "dist/<%= pkg.name %>.min.js",
-        src: "<%= concat.app.dest %>"
+        sourceMapIn: "public/dist/js/app.min.js.map",
+        sourceMap: "public/dist/js/app.min.js.map",
+        dest: "public/dist/<%= pkg.name %>.min.js",
+        src: "<%= concat_sourcemap.app.dest %>"
       }
     }
   };
@@ -70,8 +75,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-concat-sourcemap');
 
   // creating workflows
-  grunt.registerTask('default', ['clean', 'concat', 'uglify', 'nodemon']);
+  grunt.registerTask('default', ['clean', 'concat_sourcemap', 'uglify', 'nodemon']);
 
 };

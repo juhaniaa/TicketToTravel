@@ -1,4 +1,4 @@
-angular.module('app').controller('ttSignupCtrl', function($scope, ttUser, ttNotifier, $location, ttAuth) {
+angular.module('app').controller('ttSignupCtrl', ['$scope', '$location', 'ttUser', 'ttNotifier', 'ttAuth', function($scope, $location, ttUser, ttNotifier, ttAuth) {
 
   $scope.signup = function() {
     var newUserData = {
@@ -15,4 +15,4 @@ angular.module('app').controller('ttSignupCtrl', function($scope, ttUser, ttNoti
       ttNotifier.error(reason);
     })
   }
-})
+}])

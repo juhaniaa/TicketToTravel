@@ -1,4 +1,4 @@
-angular.module('app').factory('ttAuth', function($http, ttIdentity, $q, ttUser) {
+angular.module('app').factory('ttAuth', ['$http', 'ttIdentity', '$q', 'ttUser', function($http, ttIdentity, $q, ttUser) {
   return {
     authenticateUser: function(username, password) {
       var dfd = $q.defer();
@@ -61,4 +61,4 @@ angular.module('app').factory('ttAuth', function($http, ttIdentity, $q, ttUser) 
       }
     }
   }
-});
+}]);
