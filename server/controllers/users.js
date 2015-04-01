@@ -2,6 +2,7 @@ var User = require('mongoose').model('User'),
   encrypt = require('../utilities/encryption');
 
 exports.createUser = function(req, res, next) {
+  console.log("CREATING A USER IN USERCONTROLLER ON SERVER");
   var userData = req.body;
   userData.username = userData.username.toLowerCase();
   userData.salt = encrypt.createSalt();

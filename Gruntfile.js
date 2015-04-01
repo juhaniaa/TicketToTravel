@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      workspaces: ["public/dist", "generated"]
+      workspaces: ["public/dist"]
     },
 
     // minify css
