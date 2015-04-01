@@ -3,6 +3,31 @@ module.exports = function(grunt) {
   // task configurations
   var config = {
 
+    // meta data
+    pkg: grunt.file.readJSON('package.json'),
+    banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+
+    // file-lists
+    files: {
+      js: {
+        vendor: [
+          "public/vendor/jquery/dist/jquery.js",
+          "public/vendor/bootstrap/dist/js/bootstrap.js",
+          "public/vendor/toastr/toastr.js",
+          "public/vendor/angular/angular.js",
+          "public/vendor/angular-resource/angular-resource.js",
+          "public/vendor/angular-route/angular-route.js",
+        ],
+
+        app: [
+          "public/app/app.js",
+          "public/app/account/**/*.js",
+          "public/app/common/**/*.js",
+          "public/app/main/**/*.js"
+        ]
+      }
+    },
+
     // configure nodemon
     nodemon: {
       dev: {
@@ -10,42 +35,31 @@ module.exports = function(grunt) {
       }
     },
 
+    clean: {
+      workspaces: ["dist", "generated"]
+    },
+
+    // concatenate files
     concat: {
       app: {
         dest: "generated/js/app.min.js",
         src: [
-          "public/vendor/jquery/dist/jquery.js",
-          "public/vendor/bootstrap/dist/js/bootstrap.js",
-          "public/vendor/toastr/toastr.js",
-          "public/vendor/angular/angular.js",
-          "public/vendor/angular-resource/angular-resource.js",
-          "public/vendor/angular-route/angular-route.js",
-          "public/app/app.js",
-          "public/app/account/**/*.js",
-          "public/app/common/**/*.js",
-          "public/app/main/**/*.js"
+          "<%= files.js.vendor %>",
+          "<%= files.js.app %>"
         ]
       }
+    },
+
+    // minify files
+    uglify: {
+      options: {
+        banner: "<%= banner %>"
+      },
+      dist: {
+        dest: "dist/<%= pkg.name %>.min.js",
+        src: "<%= concat.app.dest %>"
+      }
     }
-    // concat: {
-    //   options: {
-    //     separator: ';'
-    //   },
-    //   dist: {
-    //     src: ['src/**/*.js'],
-    //     dest: 'dist/<%= pkg.name %>.js'
-    //   }
-    // },
-    // uglify: {
-    //   options: {
-    //     banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-    //   },
-    //   dist: {
-    //     files: {
-    //       'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
-    //     }
-    //   }
-    // },
   };
 
   // initializing task configuration
@@ -54,8 +68,10 @@ module.exports = function(grunt) {
   // load nodemon
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // creating workflows
-  grunt.registerTask('default', ['concat', 'nodemon']);
+  grunt.registerTask('default', ['clean', 'concat', 'uglify', 'nodemon']);
 
 };
