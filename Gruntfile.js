@@ -25,6 +25,13 @@ module.exports = function(grunt) {
           "public/app/common/**/*.js",
           "public/app/main/**/*.js"
         ]
+      },
+      css: {
+        app: [
+          "public/vendor/bootstrap/dist/css/bootstrap.css",
+          "public/vendor/toastr/toastr.css",
+          "public/css/site.css"
+        ]
       }
     },
 
@@ -37,6 +44,14 @@ module.exports = function(grunt) {
 
     clean: {
       workspaces: ["public/dist", "generated"]
+    },
+
+    // minify css
+    cssmin: {
+      minify: {
+        src: "<%= files.css.app %>",
+        dest: 'public/dist/app.min.css'
+      }
     },
 
     // concatenate files
@@ -76,8 +91,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-concat-sourcemap');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   // creating workflows
-  grunt.registerTask('default', ['clean', 'concat_sourcemap', 'uglify', 'nodemon']);
+  grunt.registerTask('default', ['clean', 'cssmin', 'concat_sourcemap', 'uglify', 'nodemon']);
 
 };
