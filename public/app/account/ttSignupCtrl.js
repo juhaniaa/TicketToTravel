@@ -10,9 +10,11 @@ angular.module('app').controller('ttSignupCtrl', ['$scope', '$location', 'ttUser
 
     ttAuth.createUser(newUserData).then(function() {
       ttNotifier.notify('User account created!');
+      console.log("user account was created");
       $location.path('/');
     }, function(reason) {
       ttNotifier.error(reason);
+      console.log("SOMETHING WENT WRONG IN SIGNUPCTRL");
     })
   }
 }])
