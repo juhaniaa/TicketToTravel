@@ -55,11 +55,8 @@ module.exports = function(grunt) {
     },
 
     // concatenate files
-    concat_sourcemap: {
-      options: {
-        sourcesContent:true
-      },
-      app: {
+    concat: {
+      dist: {
         dest: "public/dist/app.min.js",
         src: [
           "<%= files.js.vendor %>",
@@ -74,10 +71,8 @@ module.exports = function(grunt) {
         banner: "<%= banner %>"
       },
       dist: {
-        sourceMapIn: "public/dist/js/app.min.js.map",
-        sourceMap: "public/dist/js/app.min.js.map",
         dest: "public/dist/<%= pkg.name %>.min.js",
-        src: "<%= concat_sourcemap.app.dest %>"
+        src: "<%= concat.dist.dest %>"
       }
     }
   };
@@ -94,6 +89,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   // creating workflows
-  grunt.registerTask('default', ['clean', 'cssmin', 'concat_sourcemap', 'uglify', 'nodemon']);
+  grunt.registerTask('default', ['clean', 'cssmin', 'concat', 'uglify', 'nodemon']);
 
 };
