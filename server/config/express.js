@@ -4,7 +4,8 @@ var express = require('express'),
   stylus = require('stylus'),
   cookieParser = require('cookie-parser'),
   session = require('express-session'),
-  passport = require('passport');
+  passport = require('passport'),
+  compress = require('compression');
 
 module.exports = function(app, config) {
   function compile(str, path) {
@@ -13,6 +14,7 @@ module.exports = function(app, config) {
 
   app.set('views', config.rootPath + '/server/views');
   app.set('view engine', 'jade');
+  app.use(compress());
   app.use(logger('dev'));
   app.use(cookieParser());
   app.use(bodyParser.json());
