@@ -11,6 +11,12 @@ angular.module('app').config(['$routeProvider', '$locationProvider', function($r
     .when('/', { templateUrl: '/partials/main/main', controller: 'ttMainCtrl'})
     .when('/signup', { templateUrl: '/partials/account/signup',
       controller: 'ttSignupCtrl'
+    })
+    .when('/profile', { templateUrl: '/partials/account/profile',
+      controller: 'ttProfileCtrl', resolve: routeRoleChecks.user
+    })
+    .when('/trip', { templateUrl: '/partials/trip/trip',
+      controller: 'ttTripCtrl'
     });
 }]);
 

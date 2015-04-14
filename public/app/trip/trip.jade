@@ -1,0 +1,21 @@
+.container
+  .well
+    form.form-horizontal(name="tripForm")
+      fieldset
+        legend Search Trip
+        .form-group
+          label.col-md-2.control-label(for="origin") From
+          .col-md-10
+            input.form-control(name="origin", type="text", placeholder="From", ng-model="origin", required)
+        .form-group
+          label.col-md-2.control-label(for="destination") To
+          .col-md-10
+            input.form-control(name="destination", type="text", placeholder="Destination", ng-model="destination", required)
+        .form-group
+          label.col-md-2.control-label(for="time") Time
+          .col-md-10
+            input.form-control(name="time", type="text", placeholder="Time", ng-model="time", required)        
+        .form-group
+          .col-md-10.col-md-offset-2
+            .pull-right
+              button.btn.btn-primary(ng-click="purchase()", ng-disabled="tripForm.$invalid") Buy ticket

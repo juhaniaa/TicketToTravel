@@ -23,7 +23,8 @@ module.exports = function(grunt) {
           "public/app/app.js",
           "public/app/account/**/*.js",
           "public/app/common/**/*.js",
-          "public/app/main/**/*.js"
+          "public/app/main/**/*.js",
+          "public/app/trip/**/*.js"
         ]
       },
       css: {
