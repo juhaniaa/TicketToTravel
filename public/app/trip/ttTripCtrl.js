@@ -1,18 +1,22 @@
 angular.module('app').controller('ttTripCtrl', ['$scope', 'ttTripService', function($scope, ttTripService) {
 
-  // when user chooses a origin
-  $scope.$watch( function() {
-    return ttTripService.tripOrigin;
-  }, function(data) {
-    $scope.origin = data;
-  })
-
-  // when user chooses a destination
-  $scope.$watch( function() {
-    return ttTripService.tripDestination;
-  }, function(data) {
-    $scope.destination = data;
-  })
+  // // when user changes origin
+  // $scope.$watch( function() {
+  //   return ttTripService.getTripOrigin();
+  // }, function(data) {
+  //   $scope.origin = data;
+  //   // tell service to change available destinations
+  //   ttTripService.updateDestinations();
+  // })
+  //
+  // // when user changes destination
+  // $scope.$watch( function() {
+  //   return ttTripService.getTripDestination();
+  // }, function(data) {
+  //   $scope.destination = data;
+  //   // tell service to change available origins
+  //   ttTripService.updateOrigins();
+  // })
 
   // when the list of available origins is changed
   $scope.$watch( function() {
@@ -27,6 +31,16 @@ angular.module('app').controller('ttTripCtrl', ['$scope', 'ttTripService', funct
   }, function(data) {
     $scope.destinations = data;
   }, true)
+
+  $scope.updateDestination = function() {
+    ttTripService.setTripDestination($scope.destination);
+  }
+
+  $scope.updateOrigin = function() {
+    ttTripService.setTripOrigin($scope.origin);
+  }
+
+  $scope.allRoutes = ttTripService.getAllRoutes();
 
   // var routes = [
   //   { id: 1, name: 'Eckerö-linjen', nr: 3, stops: [stations[0], stations[1], stations[2]]},

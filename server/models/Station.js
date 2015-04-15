@@ -15,6 +15,7 @@ function createDefaultStations() {
       Station.create({name: 'Mariehamn', nr: 1, position: 'x'});
       Station.create({name: 'Eckerö', nr: 25, position: 'x'});
       Station.create({name: 'Godby', nr: 11, position: 'x'});
+      Station.create({name: 'Långnäs', nr: 13, position: 'x'});      
     }
   })
 }

@@ -1,19 +1,20 @@
 .container
   .well
-    p currently selected from {{ trip.origin }}
-    p currently selected from {{ trip.destination }}
+    p currently selected from {{ origin }}
+    p currently selected from {{ destination }}
+    p routes {{ allRoutes }}
     form.form-horizontal(name="tripForm")
       fieldset
         legend Search Trip
         .form-group
           label.col-md-2.control-label(for="origin") From
           .col-md-10
-            select.form-control(name="origin", data-ng-model="origin", data-ng-options="s.nr + '. ' + s.name for s in origins", required)
+            select.form-control(name="origin", data-ng-model="origin", ng-change="updateOrigin()", data-ng-options="s.nr + '. ' + s.name for s in origins", required)
               option(value="") Choose origin
         .form-group
           label.col-md-2.control-label(for="destination") To
           .col-md-10
-            select.form-control(name="destination", data-ng-model="destination", data-ng-options="s.nr + '. ' + s.name for s in destinations", required)        
+            select.form-control(name="destination", data-ng-model="destination", ng-change="updateDestination()", data-ng-options="s.nr + '. ' + s.name for s in destinations", required)        
               option(value="") Choose destination
         .form-group
           label.col-md-2.control-label(for="time") Time
