@@ -6,11 +6,11 @@
         .form-group
           label.col-md-2.control-label(for="origin") From
           .col-md-10
-            input.form-control(name="origin", type="text", placeholder="From", ng-model="origin", required)
+            select.form-control(data-ng-model="trip.origin", data-ng-options="s.nr + '. ' + s.name for s in stations")
         .form-group
           label.col-md-2.control-label(for="destination") To
           .col-md-10
-            input.form-control(name="destination", type="text", placeholder="Destination", ng-model="destination", required)
+            select.form-control(data-ng-model="trip.destination", data-ng-options="s.nr + '. ' + s.name for s in stations")        
         .form-group
           label.col-md-2.control-label(for="time") Time
           .col-md-10
