@@ -1,24 +1,39 @@
-angular.module('app').controller('ttTripCtrl', ['$scope', function($scope) {
+angular.module('app').controller('ttTripCtrl', ['$scope', 'ttTripService', function($scope, ttTripService) {
 
-  // first user selects a from station from all available
-  // then the to-station is allowed to be chosen from list of stations on same route
-  //...what if multiple routes on the from-station?
-  var stations = [
-    { id: 1, name: 'Gottby', nr: 15, position: 'x' },
-    { id: 2, name: 'Mariehamn', nr: 1, position: 'x' },
-    { id: 3, name: 'Eckerö', nr: 25, position: 'x' },
-    { id: 4, name: 'Godby', nr: 11, position: 'x' }
-  ];
+  // when user chooses a origin
+  $scope.$watch( function() {
+    return ttTripService.tripOrigin;
+  }, function(data) {
+    $scope.origin = data;
+  })
 
-  var routes = [
-    { id: 1, name: 'Eckerö-linjen', nr: 3, stops: [stations[0], stations[1], stations[2]]},
-    { id: 1, name: 'Godby-linjen', nr: 3, stops: [stations[0], stations[3]]}
-  ];
+  // when user chooses a destination
+  $scope.$watch( function() {
+    return ttTripService.tripDestination;
+  }, function(data) {
+    $scope.destination = data;
+  })
 
-  $scope.stations = stations;
-  $scope.routes = routes;
-  $scope.trip = {
-    origin: stations[1],
-    destination: stations[3]
-  };
+  // when the list of available origins is changed
+  $scope.$watch( function() {
+    return ttTripService.getOriginStations();
+  }, function(data) {
+    $scope.origins = data;
+  }, true)
+
+  // when the list of available destinations is changed
+  $scope.$watch( function() {
+    return ttTripService.getDestinationStations();
+  }, function(data) {
+    $scope.destinations = data;
+  }, true)
+
+  // var routes = [
+  //   { id: 1, name: 'Eckerö-linjen', nr: 3, stops: [stations[0], stations[1], stations[2]]},
+  //   { id: 1, name: 'Godby-linjen', nr: 3, stops: [stations[0], stations[3]]}
+  // ];
+
+  $scope.purchase = function() {
+
+  }
 }])

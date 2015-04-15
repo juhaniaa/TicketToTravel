@@ -1,5 +1,7 @@
 var mongoose = require('mongoose'),
-  userModel = require('../models/User.js');
+  userModel = require('../models/User.js'),
+  stationModel = require('../models/Station.js'),
+  routeModel = require('../models/Route.js');
 
 module.exports = function(config) {
   mongoose.connect(config.db);
@@ -8,4 +10,7 @@ module.exports = function(config) {
   db.once('open', function callback() {
     console.log('tickettravel db opened');
   });
+
+  stationModel.createDefaultStations();
+  routeModel.createDefaultRoutes();
 };

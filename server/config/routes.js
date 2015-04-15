@@ -1,13 +1,17 @@
 var auth = require('./auth'),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  users = require('../controllers/users');
+  users = require('../controllers/users'),
+  stations = require('../controllers/stations');
+  routes = require('../controllers/routes');
 
 module.exports = function(app) {
 
   app.post('/api/users', users.createUser);
-
   app.put('/api/users', users.updateUser);
+
+  app.get('/api/stations', stations.getStations);
+  app.get('/api/routes', routes.getRoutes);
 
   // render partials from public folder
   app.get('/partials/*', function(req, res) {
