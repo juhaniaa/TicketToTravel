@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+  Station = require('mongoose').model('Station');
 
 var routeSchema = mongoose.Schema({
   name: {type:String, required:'{PATH} is required'},
