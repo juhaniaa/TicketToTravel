@@ -1,26 +1,10 @@
-.container
-  .well
-    p currently selected from {{ origin }}
-    p currently selected from {{ destination }}
-    p routes {{ allRoutes }}
-    form.form-horizontal(name="tripForm")
-      fieldset
-        legend Search Trip
-        .form-group
-          label.col-md-2.control-label(for="origin") From
-          .col-md-10
-            select.form-control(name="origin", data-ng-model="origin", ng-change="updateOrigin()", data-ng-options="s.nr + '. ' + s.name for s in origins", required)
-              option(value="") Choose origin
-        .form-group
-          label.col-md-2.control-label(for="destination") To
-          .col-md-10
-            select.form-control(name="destination", data-ng-model="destination", ng-change="updateDestination()", data-ng-options="s.nr + '. ' + s.name for s in destinations", required)        
-              option(value="") Choose destination
-        .form-group
-          label.col-md-2.control-label(for="time") Time
-          .col-md-10
-            input.form-control(name="time", type="text", placeholder="Time", ng-model="time", required)        
-        .form-group
-          .col-md-10.col-md-offset-2
-            .pull-right
-              button.btn.btn-primary(ng-click="purchase()", ng-disabled="tripForm.$invalid") Buy ticket
+.container  
+  .col-md-12
+    label From: {{ currentOrigin.name }}
+    a(href="/goFrom") Change
+  
+  .col-md-12
+    label To: {{ currentDestination.name }}
+    a(href="/goTo") Change
+  .col-md-12
+    button.btn.btn-primary(ng-click="purchase()") Find trip

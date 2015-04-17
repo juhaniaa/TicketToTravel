@@ -17,6 +17,12 @@ angular.module('app').config(['$routeProvider', '$locationProvider', function($r
     })
     .when('/trip', { templateUrl: '/partials/trip/trip',
       controller: 'ttTripCtrl'
+    })
+    .when('/goFrom', { templateUrl: '/partials/trip/station-list',
+      controller: 'ttFromStationCtrl'
+    })
+    .when('/goTo', { templateUrl: '/partials/trip/station-list',
+      controller: 'ttToStationCtrl'
     });
 }]);
 
