@@ -1,4 +1,4 @@
-angular.module('app').controller('ttTripCtrl', ['$scope', 'ttTripService', function($scope, ttTripService) {
+angular.module('app').controller('ttTripCtrl', ['ttCachedRoutes', '$scope', 'ttTripService', function(ttCachedRoutes, $scope, ttTripService) {
 
   // when user changes origin
   $scope.$watch( function() {
@@ -18,6 +18,8 @@ angular.module('app').controller('ttTripCtrl', ['$scope', 'ttTripService', funct
     // find route/trip where both currentDestination and currentOrigin
     console.log("Finding trip");
     $scope.trips = ttTripService.findTrips();
+    var routes = ttCachedRoutes.query();
+    console.log(routes);
   }
 
   $scope.purchase = function() {

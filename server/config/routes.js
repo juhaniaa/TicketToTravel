@@ -11,6 +11,7 @@ module.exports = function(app) {
   app.put('/api/users', users.updateUser);
 
   app.get('/api/stations', stations.getStations);
+
   app.get('/api/routes', function(req, res) {
     routes.getRoutes(req.query, res);
   });

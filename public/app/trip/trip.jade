@@ -10,4 +10,4 @@
     button.btn.btn-primary(ng-click="findTrips()") Find trip
   
   .col-md-12  
-    a.list-group-item(ng-click="purchase()" href="#" ng-repeat="trip in trips") {{trip.name}} {{trip.nr}}
+    a.list-group-item(ng-click="purchase(trip)" href="#" ng-repeat="trip in trips") {{trip.name}} {{trip.nr}}

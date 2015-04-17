@@ -1,6 +1,12 @@
 var Route = require('mongoose').model('Route');
 
 exports.getRoutes = function(query, res) {
+
+  Route.find({}).exec(function(err, collection) {
+    console.log(collection);
+  })
+
+
   var dest = query.destination;
   var orig = query.origin;
   // find the routes that have both of these two stations

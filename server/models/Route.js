@@ -16,10 +16,10 @@ function createDefaultRoutes() {
   })
   Route.find({}).exec(function(err, collection) {
     if(collection.length === 0) {
-      Route.create({name: 'Eckerö-linjen', nr: 1, stations:[st[0], st[1]]});
-      Route.create({name: 'Godby-linjen', nr: 2, stations:[st[1], st[3]]});
-      Route.create({name: 'Långnäs-linjen', nr: 3, stations:[st[1], st[4]]});
-    }
+      Route.create({name: 'Eckerö-linjen', nr: 1, stations:[{name: 'Mariehamn', nr: 1, position: 'x'}, {name: 'Gottby', nr: 15, position: 'x'}, {name: 'Eckerö', nr: 25, position: 'x'}]});
+      Route.create({name: 'Godby-linjen', nr: 2, stations:[{name: 'Mariehamn', nr: 1, position: 'x'}, {name: 'Godby', nr: 11, position: 'x'}]});
+      Route.create({name: 'Långnäs-linjen', nr: 3, stations:[{name: 'Mariehamn', nr: 1, position: 'x'}, {name: 'Långnäs', nr: 13, position: 'x'}]});
+    }    
   })
 }
 
