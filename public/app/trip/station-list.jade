@@ -1,0 +1,8 @@
+.container.top-padding-med
+  form.form-inline
+    .form-group
+      input.form-control(ng-model="searchText", placeholder="Filter")
+    .form-group.margin-left-med
+      select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
+
+  a.list-group-item(ng-click="addStation(station)" href="#" ng-repeat="station in stations | filter:searchText | orderBy:sortOrder") {{station.name}} {{station.nr}}
