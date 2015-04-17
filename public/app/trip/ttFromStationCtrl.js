@@ -9,8 +9,6 @@ angular.module('app').controller('ttFromStationCtrl', ['$scope', '$location', 't
   $scope.addStation = function(station) {
     // user clicked station to add
     // add it to origin station
-    console.log("setOrigin");
-    console.log(station);
     ttTripService.setTripOrigin(station);
     ttNotifier.notify('Origin added');
     $location.path('/trip');

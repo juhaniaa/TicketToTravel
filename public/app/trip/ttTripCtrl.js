@@ -14,6 +14,12 @@ angular.module('app').controller('ttTripCtrl', ['$scope', 'ttTripService', funct
     $scope.currentDestination = data;
   })
 
+  $scope.findTrips = function() {
+    // find route/trip where both currentDestination and currentOrigin
+    console.log("Finding trip");
+    $scope.trips = ttTripService.findTrips();
+  }
+
   $scope.purchase = function() {
 
   }

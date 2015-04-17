@@ -7,4 +7,7 @@
     label To: {{ currentDestination.name }}
     a(href="/goTo") Change
   .col-md-12
-    button.btn.btn-primary(ng-click="purchase()") Find trip
+    button.btn.btn-primary(ng-click="findTrips()") Find trip
+  
+  .col-md-12  
+    a.list-group-item(ng-click="purchase()" href="#" ng-repeat="trip in trips") {{trip.name}} {{trip.nr}}

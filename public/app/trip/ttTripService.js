@@ -1,4 +1,4 @@
-angular.module('app').factory('ttTripService', ['ttStation', 'ttCachedStations', 'ttCachedRoutes', 'ttRoute', function(ttStation, ttCachedStations, ttCachedRoutes, ttRoute) {
+angular.module('app').factory('ttTripService', ['ttRoute', function(ttRoute) {
 
   var tripOrigin = null;
   var tripDestination = null;
@@ -7,7 +7,8 @@ angular.module('app').factory('ttTripService', ['ttStation', 'ttCachedStations',
     getTripOrigin : getTripOrigin,
     setTripOrigin : setTripOrigin,
     getTripDestination : getTripDestination,
-    setTripDestination : setTripDestination
+    setTripDestination : setTripDestination,
+    findTrips : findTrips
   };
 
   function getTripOrigin() {
@@ -24,6 +25,11 @@ angular.module('app').factory('ttTripService', ['ttStation', 'ttCachedStations',
 
   function setTripDestination(newDestination) {
     tripDestination = newDestination;
+  }
+
+  function findTrips() {
+    // request routes that have currentOrigin and Destination as stations
+    return ttRoute.query({origin:tripOrigin.nr, destination:tripDestination.nr});
   }
 
 }]);

@@ -11,7 +11,9 @@ module.exports = function(app) {
   app.put('/api/users', users.updateUser);
 
   app.get('/api/stations', stations.getStations);
-  app.get('/api/routes', routes.getRoutes);
+  app.get('/api/routes', function(req, res) {
+    routes.getRoutes(req.query, res);
+  });
 
   // render partials from public folder
   app.get('/partials/*', function(req, res) {
