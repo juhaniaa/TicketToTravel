@@ -23,6 +23,9 @@ angular.module('app').config(['$routeProvider', '$locationProvider', function($r
     })
     .when('/goTo', { templateUrl: '/partials/trip/station-list',
       controller: 'ttToStationCtrl'
+    })
+    .when('/ticket', { templateUrl: '/partials/trip/ticket',
+      controller: 'ttTicketCtrl'
     });
 }]);
 

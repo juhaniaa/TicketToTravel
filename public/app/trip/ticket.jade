@@ -1,0 +1,34 @@
+.container
+  .well
+    form.form-horizontal(name="ticketForm")
+      fieldset
+        legend Ticket
+        .form-group
+          label.col-md-2.control-label Route
+          .col-md-10 {{ ticket.Route.name }}
+        .form-group
+          label.col-md-2.control-label Origin
+          .col-md-10 {{ ticket.Origin.name }}
+        .form-group
+          label.col-md-2.control-label Destination
+          .col-md-10 {{ ticket.Destination.name }}         
+        .form-group
+          label.col-md-2.control-label Zones
+          .col-md-10 {{ ticket.Zones }}           
+        .form-group
+          label.col-md-2.control-label Price/pce
+          .col-md-10 {{ ticket.Price }}           
+        .form-group
+          label.col-md-2.control-label(for="dropdown") Nr of tickets
+          .col-md-10
+            input.form-control(name="dropdown", type="text", placeholder="dropdown", ng-model="dropdown", required)
+        .form-group
+          label.col-md-2.control-label(for="password") Password
+          .col-md-10
+            input.form-control(name="password", type="text", placeholder="Password", ng-model="password", required)
+        .form-group
+          .col-md-10.col-md-offset-2
+            .pull-right
+              button.btn.btn-primary(ng-click="purchase()", ng-disabled="signupForm.$invalid") Purchase
+              | &nbsp;
+              a.btn.btn-default(href="/") Cancel
