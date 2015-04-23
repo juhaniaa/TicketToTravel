@@ -5,27 +5,27 @@
         legend Ticket
         .form-group
           label.col-md-2.control-label Route
-          .col-md-10 {{ ticket.Route.name }}
+          .col-md-10 {{ ticket.route.name }}
         .form-group
           label.col-md-2.control-label Origin
-          .col-md-10 {{ ticket.Origin.name }}
+          .col-md-10 {{ ticket.origin.name }}
         .form-group
           label.col-md-2.control-label Destination
-          .col-md-10 {{ ticket.Destination.name }}         
+          .col-md-10 {{ ticket.destination.name }}         
         .form-group
           label.col-md-2.control-label Zones
-          .col-md-10 {{ ticket.Zones }}           
+          .col-md-10 {{ ticket.zone.nr }}           
         .form-group
           label.col-md-2.control-label Price/pce
-          .col-md-10 {{ ticket.Price }}           
+          .col-md-10 {{ ticket.zone.price }}   
         .form-group
-          label.col-md-2.control-label(for="dropdown") Nr of tickets
+          label.col-md-2.control-label Nr of tickets
           .col-md-10
-            input.form-control(name="dropdown", type="text", placeholder="dropdown", ng-model="dropdown", required)
+            select(ng-model="ticketAmount", ng-options="amount for amount in amounts")        
         .form-group
           label.col-md-2.control-label(for="password") Password
           .col-md-10
-            input.form-control(name="password", type="text", placeholder="Password", ng-model="password", required)
+            input.form-control(name="password", type="password", placeholder="Password", ng-model="password", required)
         .form-group
           .col-md-10.col-md-offset-2
             .pull-right

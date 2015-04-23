@@ -3,7 +3,8 @@ var auth = require('./auth'),
   User = mongoose.model('User'),
   users = require('../controllers/users'),
   stations = require('../controllers/stations');
-  routes = require('../controllers/routes');
+  routes = require('../controllers/routes'),
+  tickets = require('../controllers/tickets.js');
 
 module.exports = function(app) {
 
@@ -15,6 +16,8 @@ module.exports = function(app) {
   app.get('/api/routes', function(req, res) {
     routes.getRoutes(req.query, res);
   });
+
+  app.post('/api/tickets', tickets.createTicket);
 
   // render partials from public folder
   app.get('/partials/*', function(req, res) {

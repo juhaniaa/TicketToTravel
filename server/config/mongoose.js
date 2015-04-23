@@ -1,7 +1,9 @@
 var mongoose = require('mongoose'),
   userModel = require('../models/User.js'),
   stationModel = require('../models/Station.js'),
-  routeModel = require('../models/Route.js');
+  routeModel = require('../models/Route.js'),
+  zoneModel = require('../models/Zone.js'),
+  ticketModel = require('../models/Ticket.js');
 
 module.exports = function(config) {
   mongoose.connect(config.db);
@@ -13,4 +15,5 @@ module.exports = function(config) {
 
   stationModel.createDefaultStations();
   routeModel.createDefaultRoutes();
+  zoneModel.createDefaultZones();
 };
