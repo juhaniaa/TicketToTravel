@@ -29,3 +29,13 @@ exports.createTicket = function(req, res) {
   //   res.send(ticket);
   // })
 }
+
+exports.getTickets = function(req, res) {
+  var user = req.query.userId;
+  // find the tickets of a specific user
+
+  Ticket.find({'user.id': user}).exec(function(err, tickets) {
+    console.log(tickets);
+    res.send(tickets);
+  })
+}

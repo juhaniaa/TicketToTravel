@@ -17,6 +17,9 @@ module.exports = function(app) {
     routes.getRoutes(req.query, res);
   });
 
+  app.get('/api/tickets', function(req, res) {
+    tickets.getTickets(req, res);
+  });
   app.post('/api/tickets', tickets.createTicket);
 
   // render partials from public folder

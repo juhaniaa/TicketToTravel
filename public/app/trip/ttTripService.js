@@ -1,4 +1,4 @@
-angular.module('app').factory('ttTripService', ['ttRoute', 'ttTicket', '$q', function(ttRoute, ttTicket, $q) {
+angular.module('app').factory('ttTripService', ['ttRoute', 'ttTicket', 'ttIdentity', '$q', function(ttRoute, ttTicket, ttIdentity, $q) {
 
   var tripOrigin = null;
   var tripDestination = null;
@@ -76,17 +76,10 @@ angular.module('app').factory('ttTripService', ['ttRoute', 'ttTicket', '$q', fun
 
   function createTicket(ticketAmount) {
 
+    ticket._owner = ttIdentity.currentUser._id;
     ticket.amount = ticketAmount;
 
-    // var tick = {
-    //   route : {
-    //     nr: ticket.route.nr
-    //   }
-    // }
-
     var newTicket = new ttTicket(ticket);
-
-    console.log(ticket);
 
     var dfd = $q.defer();
     newTicket.$save().then(function() {

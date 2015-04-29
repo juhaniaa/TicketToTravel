@@ -26,6 +26,9 @@ angular.module('app').config(['$routeProvider', '$locationProvider', function($r
     })
     .when('/ticket', { templateUrl: '/partials/trip/ticket',
       controller: 'ttTicketCtrl'
+    })
+    .when('/tickets', { templateUrl: '/partials/trip/ticket-list',
+      controller: 'ttTicketListCtrl'
     });
 }]);
 

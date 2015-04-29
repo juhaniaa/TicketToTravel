@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+  Schema = mongoose.Schema;
   // Route = require('mongoose').model('Route'),
   // Station = require('mongoose').model('Station'),
   // Zone = require('mongoose').model('Zone');
@@ -21,7 +22,8 @@ var mongoose = require('mongoose');
       price: {type:Number, required:'{PATH} is required'},
     },
     amount: Number,
-    payed: Boolean
+    payed: Boolean,
+    _owner: {type:Schema.Types.ObjectId, ref: 'User', required:'{PATH} is required'}
   });
 
 // var ticketSchema = mongoose.Schema({

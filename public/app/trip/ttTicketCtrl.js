@@ -6,6 +6,8 @@ angular.module('app').controller('ttTicketCtrl', ['$scope', 'ttTripService', 'tt
   $scope.purchase = function() {
     //TODO check that it is the correct password
     //TODO make post to server with ticket then DIBS stuff
+
+
     if(false) {
       ttNotifier.error('Password not correct');
     } else {
