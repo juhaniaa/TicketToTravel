@@ -28,7 +28,7 @@ angular.module('app').config(['$routeProvider', '$locationProvider', function($r
       controller: 'ttTicketCtrl'
     })
     .when('/tickets', { templateUrl: '/partials/trip/ticket-list',
-      controller: 'ttTicketListCtrl'
+      controller: 'ttTicketListCtrl', resolve: routeRoleChecks.user
     });
 }]);
 

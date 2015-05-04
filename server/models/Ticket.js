@@ -22,6 +22,7 @@ var mongoose = require('mongoose'),
       price: {type:Number, required:'{PATH} is required'},
     },
     amount: Number,
+    date: {type:Date, default: Date.now},
     payed: Boolean,
     _owner: {type:Schema.Types.ObjectId, ref: 'User', required:'{PATH} is required'}
   });
