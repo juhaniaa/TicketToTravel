@@ -1,4 +1,6 @@
-angular.module('app').factory('ttTicketDetail', ['ttTicket', function() {
+angular.module('app').factory('ttTicketDetail',
+  ['ttTicket',
+  function() {
 
   var ticket = null;
 

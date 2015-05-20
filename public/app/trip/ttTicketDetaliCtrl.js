@@ -1,4 +1,6 @@
-angular.module('app').controller('ttTicketDetailCtrl', ['$scope', '$location', 'ttTicketDetail', function($scope, $location, ttTicketDetail) {
+angular.module('app').controller('ttTicketDetailCtrl',
+  ['$scope', '$location', 'ttTicketDetail',
+  function($scope, $location, ttTicketDetail) {
 
    var showTicket = ttTicketDetail.fetch();
 

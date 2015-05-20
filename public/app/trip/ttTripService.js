@@ -32,8 +32,12 @@ angular.module('app').factory('ttTripService', ['ttRoute', 'ttTicket', 'ttIdenti
   }
 
   function findTrips() {
+    if(tripOrigin === null || tripDestination === null || tripOrigin.nr === tripDestination.nr) {
+      return false;
+    } else {
     // request routes that have currentOrigin and Destination as stations
-    return ttRoute.query({origin:tripOrigin.nr, destination:tripDestination.nr});
+      return ttRoute.query({origin:tripOrigin.nr, destination:tripDestination.nr});
+    }
   }
 
   function setTicket(route) {

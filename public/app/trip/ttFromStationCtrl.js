@@ -7,8 +7,6 @@ angular.module('app').controller('ttFromStationCtrl', ['$scope', '$location', 't
   $scope.sortOrder = $scope.sortOptions[0].value;
 
   $scope.addStation = function(station) {
-    // user clicked station to add
-    // add it to origin station
     ttTripService.setTripOrigin(station);
     ttNotifier.notify('Origin added');
     $location.path('/trip');

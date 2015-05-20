@@ -1,4 +1,6 @@
-angular.module('app').controller('ttTripCtrl', ['ttCachedRoutes', '$location', '$scope', 'ttTripService', function(ttCachedRoutes, $location, $scope, ttTripService) {
+angular.module('app').controller('ttTripCtrl',
+  ['ttCachedRoutes', '$location', '$scope', 'ttNotifier', 'ttTripService',
+  function(ttCachedRoutes, $location, $scope, ttNotifier, ttTripService) {
 
   // when user changes origin
   $scope.$watch( function() {
@@ -16,20 +18,17 @@ angular.module('app').controller('ttTripCtrl', ['ttCachedRoutes', '$location', '
 
   $scope.findTrips = function() {
     // find route/trip where both currentDestination and currentOrigin present
-    // TODO should not run if same orig as dest
-    console.log("Finding trip");
-    $scope.trips = ttTripService.findTrips();
-
-    // TEMP
-    var routes = ttCachedRoutes.query();
-    console.log(routes);
+     var trips = ttTripService.findTrips();
+     if(trips) {
+       $scope.trips
+     } else {
+       ttNotifier.error('Both stations must be selected and unique');
+     }
   }
 
   $scope.showTicket = function(route) {
-    // create ticket object and redirect to ticket.jade?
-    console.log(route);
+    // create ticket object and redirect
     ttTripService.setTicket(route);
     $location.path('/ticket');
-
   }
 }])

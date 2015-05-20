@@ -1,4 +1,7 @@
-angular.module('app').controller('ttProfileCtrl', ['$scope', 'ttAuth', 'ttIdentity', 'ttNotifier', function($scope, ttAuth, ttIdentity, ttNotifier){
+angular.module('app').controller('ttProfileCtrl',
+  ['$scope', 'ttAuth', 'ttIdentity', 'ttNotifier',
+  function($scope, ttAuth, ttIdentity, ttNotifier){
+    
   $scope.email = ttIdentity.currentUser.username;
   $scope.fname = ttIdentity.currentUser.firstName;
   $scope.lname = ttIdentity.currentUser.lastName;

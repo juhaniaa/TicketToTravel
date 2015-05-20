@@ -7,7 +7,6 @@ exports.getRoutes = function(query, res) {
   // find the routes that have both of these two stations
   // Route.find({'stations.nr': { $all: [query.origin, query.destination]}}).exec(function(err, routes) {
   Route.find({'stations.nr': { $all: [dest, orig]}}).exec(function(err, routes) {
-    console.log(routes);
     res.send(routes);
   })
 };
