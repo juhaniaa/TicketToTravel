@@ -2,13 +2,12 @@ angular.module('app').controller('ttToStationCtrl', ['$scope', '$location', 'ttC
 
   $scope.stations = ttCachedStations.query();
 
-  $scope.sortOptions = [{value:"name", text:"Sort by Name"},
+  $scope.sortOptions = [
+    {value:"name", text:"Sort by Name"},
     {value:"nr", text:"Sort by Number"}];
   $scope.sortOrder = $scope.sortOptions[0].value;
 
-  $scope.addStation = function(station) {
-    // user clicked station to add
-    // add it to Destination
+  $scope.addStation = function(station) {    
     ttTripService.setTripDestination(station);
     ttNotifier.notify('Destination added');
     $location.path('/trip');

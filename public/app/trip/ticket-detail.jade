@@ -1,0 +1,14 @@
+.container.top-padding-med
+  div 
+    h4 Date
+    h5 {{ticket.date | date}}
+    h4 From
+    h5 {{ticket.origin.name}}
+    h4 To
+    h5 {{ticket.destination.name}}
+    h4 Route
+    h5 Nr: {{ticket.route.nr}} Name: {{ticket.route.name}} 
+    h4 Zone
+    h5 Nr: {{ticket.zone.nr}} Price: {{ticket.zone.price}}
+        
+    a.btn.btn-default(href="/tickets") Back
